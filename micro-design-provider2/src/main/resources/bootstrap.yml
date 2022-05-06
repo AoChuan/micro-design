@@ -1,0 +1,11 @@
+server:
+  port: 9021
+spring:
+  application:
+    name: provider
+#  cloud:
+#    nacos:
+#      discovery:
+#        server-addr:
+#      config:
+#        server-addr:

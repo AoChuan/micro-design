@@ -1,0 +1,15 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: micro-design-gateway
+#  cloud:
+#    nacos:
+#      discovery:
+#        server-addr:
+#      config:
+#        server-addr: ${spring.cloud.nacos.discovery.server-addr:null}
+#        namespace: dev
+#        group: dev
+
+

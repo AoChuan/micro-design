@@ -1,0 +1,11 @@
+server:
+  port: 8091
+spring:
+  application:
+    name: cosumer
+#  cloud:
+#    nacos:
+#      discovery:
+#        server-addr:
+#      config:
+#        server-addr:
