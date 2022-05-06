@@ -3,6 +3,15 @@ server:
 spring:
   application:
     name: micro-design-gateway
+  cloud:
+    gateway:
+      routes:
+        - id: tesRoute
+          uri: lb://cosumer
+          predicates:
+            - Path=/tes/find
+#          filters:
+#
 #  cloud:
 #    nacos:
 #      discovery:
