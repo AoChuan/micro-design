@@ -5,20 +5,29 @@ spring:
     name: micro-design-gateway
   cloud:
     gateway:
+      discovery:
+        locator:
+          enabled: true
       routes:
         - id: tesRoute
           uri: lb://cosumer
           predicates:
-            - Path=/tes/find
+            - Path=/tes/find/
 #          filters:
-#
-#  cloud:
-#    nacos:
-#      discovery:
-#        server-addr:
-#      config:
-#        server-addr: ${spring.cloud.nacos.discovery.server-addr:null}
-#        namespace: dev
-#        group: dev
-
+    nacos:
+      discovery:
+        server-addr: 192.168.235.138:8848
+      config:
+        server-addr: ${spring.cloud.nacos.discovery.server-addr:127.0.0.1:8848}
+  zipkin:
+    base-url: http://192.168.235.138:9411/
+    discovery-client-enabled: false
+    sender:
+      type: web
+    sleuth:
+      sampler:
+        probability: 1
+logging:
+  level:
+    org.springframework.cloud.sleuth: debug
 
