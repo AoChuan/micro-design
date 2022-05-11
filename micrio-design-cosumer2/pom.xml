@@ -47,5 +47,15 @@
             <artifactId>logstash-logback-encoder</artifactId>
             <version>5.3</version>
         </dependency>
+        <!--        sentinel依赖-->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
+        </dependency>
+        <!--        当前微服务与sentinel通信交互所需依赖-->
+<!--        <dependency>-->
+<!--            <groupId>com.alibaba.csp</groupId>-->
+<!--            <artifactId>sentinel-transport-simple-http</artifactId>-->
+<!--        </dependency>-->
     </dependencies>
 </project>

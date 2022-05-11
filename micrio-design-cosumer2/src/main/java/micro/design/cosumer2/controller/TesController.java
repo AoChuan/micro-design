@@ -1,5 +1,6 @@
 package micro.design.cosumer2.controller;
 
+import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import micro.design.cosumer2.feign.TesFeign;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,5 +21,10 @@ public class TesController {
     public void find(){
         logger.info("gatewayto:cosumer2");
         tesFeign.find();
+    }
+    @RequestMapping(value = "/tes/find2/",method = RequestMethod.GET)
+    @SentinelResource(value = "find2")
+    public String find2(){
+        return "hello dashboard!!!";
     }
 }

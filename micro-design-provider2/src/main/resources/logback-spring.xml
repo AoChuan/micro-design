@@ -1,66 +1,66 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <configuration>
-    <!--应用名称-->
-    <springProperty scope="context" name="APP_NAME" source="spring.application.name" defaultValue="springBoot"/>
-    <!--LogStash访问host-->
-    <springProperty name="LOG_STASH_HOST" scope="context" source="logstash.host" defaultValue="服务器ip"/>
+        <!--应用名称-->
+        <springProperty scope="context" name="APP_NAME" source="spring.application.name" defaultValue="springBoot"/>
+    <!--    &lt;!&ndash;LogStash访问host&ndash;&gt;-->
+    <!--    <springProperty name="LOG_STASH_HOST" scope="context" source="logstash.host" defaultValue="服务器ip"/>-->
     <!-- 控制台输出日志 -->
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
             <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%X{traceId}] [%level] [%c:%L] - %msg%n</pattern>
         </encoder>
     </appender>
-    <!--每天生成一个日志文件，保存30天的日志文件。-->
-    <appender name="DayFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <File>logs/log.log</File>
-        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>logs/log.%d{yyyy-MM-dd}.log</fileNamePattern>
-            <maxHistory>30</maxHistory>
-        </rollingPolicy>
-        <encoder>
-            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%X{traceId}] [%level] [%thread] [%c:%L] - %msg%n</pattern>
-        </encoder>
-    </appender>
+    <!--    &lt;!&ndash;每天生成一个日志文件，保存30天的日志文件。&ndash;&gt;-->
+    <!--    <appender name="DayFile" class="ch.qos.logback.core.rolling.RollingFileAppender">-->
+    <!--        <File>logs/log.log</File>-->
+    <!--        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">-->
+    <!--            <fileNamePattern>logs/log.%d{yyyy-MM-dd}.log</fileNamePattern>-->
+    <!--            <maxHistory>30</maxHistory>-->
+    <!--        </rollingPolicy>-->
+    <!--        <encoder>-->
+    <!--            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%X{traceId}] [%level] [%thread] [%c:%L] - %msg%n</pattern>-->
+    <!--        </encoder>-->
+    <!--    </appender>-->
 
     <!--业务日志输出到LogStash-->
     <appender name="LOG_STASH_BUSINESS" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
-        <destination>${LOG_STASH_HOST}:4560</destination>
+        <destination>192.168.235.130:4560</destination>
         <encoder charset="UTF-8" class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
             <providers>
                 <timestamp>
                     <timeZone>Asia/Shanghai</timeZone>
                 </timestamp>
                 <!--自定义日志输出格式-->
-                <pattern>
-                    <pattern>
-                        {
-                        "service": "${APP_NAME:-}",
-                        "level": "%level",
-                        "pid": "${PID:-}",
-                        "thread": "%thread",
-                        "class": "%logger",
-                        "traceId": "%X{traceId:-}",
-                        "message": "%message",
-                        "stack_trace": "%exception"
-                        }
-                    </pattern>
-                </pattern>
+<!--                <pattern>-->
+<!--                    <pattern>-->
+<!--                        {-->
+<!--                        "service": "${APP_NAME:-}",-->
+<!--                        "level": "%level",-->
+<!--                        "pid": "${PID:-}",-->
+<!--                        "thread": "%thread",-->
+<!--                        "class": "%logger",-->
+<!--                        "traceId": "%X{traceId:-}",-->
+<!--                        "message": "%message",-->
+<!--                        "stack_trace": "%exception"-->
+<!--                        }-->
+<!--                    </pattern>-->
+<!--                </pattern>-->
             </providers>
         </encoder>
     </appender>
 
-    <!--指定logger name为包名或类全名 指定级别 additivity设置是否传递到root logger -->
-    <logger name="slf4j" level="INFO" additivity="false">
-        <appender-ref ref="STDOUT"/>
-        <appender-ref ref="DayFile"/>
-        <appender-ref ref="LOG_STASH_BUSINESS"/>
-    </logger>
+    <!--    &lt;!&ndash;指定logger name为包名或类全名 指定级别 additivity设置是否传递到root logger &ndash;&gt;-->
+    <!--    <logger name="slf4j" level="INFO" additivity="false">-->
+    <!--        <appender-ref ref="STDOUT"/>-->
+    <!--        <appender-ref ref="DayFile"/>-->
+    <!--        <appender-ref ref="LOG_STASH_BUSINESS"/>-->
+    <!--    </logger>-->
     <!--slf4j2包下的类在ERROR级别时候传递到root logger中-->
-    <logger name="slf4j2" level="ERROR"/>
+    <!--    <logger name="slf4j2" level="ERROR"/>-->
     <!--根logger控制-->
     <root level="INFO">
         <appender-ref ref="STDOUT"/>
-        <appender-ref ref="DayFile"/>
+        <!--        <appender-ref ref="DayFile"/>-->
         <appender-ref ref="LOG_STASH_BUSINESS"/>
     </root>
 </configuration>
