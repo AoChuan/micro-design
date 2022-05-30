@@ -12,6 +12,8 @@
         <module>micrio-design-cosumer2</module>
         <module>micro-design-provider1</module>
         <module>micro-design-provider2</module>
+        <module>netty-test</module>
+        <module>micro-design-login</module>
     </modules>
     <name>micro-design</name>
     <description>micro-design</description>
