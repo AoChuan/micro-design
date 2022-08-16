@@ -58,4 +58,24 @@
 <!--            <artifactId>sentinel-transport-simple-http</artifactId>-->
 <!--        </dependency>-->
     </dependencies>
+<!--加上打包不报错-->
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <mainClass>micro.design.cosumer2.cosumer2Application</mainClass>
+                </configuration>
+<!--                <executions>-->
+<!--                    <execution>-->
+<!--                        <id>repackage</id>-->
+<!--                        <goals>-->
+<!--                            <goal>repackage</goal>-->
+<!--                        </goals>-->
+<!--                    </execution>-->
+<!--                </executions>-->
+            </plugin>
+        </plugins>
+    </build>
 </project>
