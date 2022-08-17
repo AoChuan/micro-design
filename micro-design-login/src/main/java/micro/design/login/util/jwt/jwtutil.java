@@ -1,4 +1,4 @@
-package micro.design.login.util;
+package micro.design.login.util.jwt;
 
 import io.jsonwebtoken.Claims;
 

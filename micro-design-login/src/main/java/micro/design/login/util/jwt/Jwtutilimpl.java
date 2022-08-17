@@ -1,15 +1,15 @@
-package micro.design.login.util;
+package micro.design.login.util.jwt;
 
 import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.JwtBuilder;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import micro.design.login.util.jwt.jwtutil;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
 
 @Component
-public class Jwtutilimpl implements jwtutil{
+public class Jwtutilimpl implements jwtutil {
 
 
     @Override

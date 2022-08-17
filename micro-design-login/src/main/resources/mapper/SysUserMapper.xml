@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="micro.design.login.mapper.SysUserMapper">
+
+    <!--根据用户名查询用户-->
+    <select id="selectByName" resultMap="SysUserMap">
+        select * from sys_user where account = #{userName};
+    </select>
+
+
+</mapper>
