@@ -13,4 +13,9 @@ public class SysPermissionServiceImpl implements SysPermissionService {
     List<SysPermission> selectListByUser(Integer userId){
         return sysPermissionMapper.selectListByUser(userId);
     }
+
+    @Override
+    public List<SysPermission> selectListByPath(String requestUrl) {
+        return sysPermissionMapper.selectListByPath(requestUrl);
+    }
 }

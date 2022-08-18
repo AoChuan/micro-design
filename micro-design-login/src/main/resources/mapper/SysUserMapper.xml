@@ -4,7 +4,13 @@
 
     <!--根据用户名查询用户-->
     <select id="selectByName" resultMap="SysUserMap">
-        select * from sys_user where account = #{userName};
+        select *
+        from sys_user
+        <where>
+            <if test="userName!=null and userName!=''">
+                account=#{userName}
+            </if>
+        </where>
     </select>
 
 
